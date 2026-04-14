@@ -1,0 +1,562 @@
+/* ============================================
+   PINKY DEY MAKEUP STUDIO — Custom Styles
+   Color Palette: Pink, Gold, White
+   Premium Luxury UI Design
+   ============================================ */
+
+/* ============================================
+   ROOT VARIABLES & RESET
+   ============================================ */
+:root {
+    --pink-primary: #ec4899;
+    --pink-dark: #db2777;
+    --gold-primary: #d4a535;
+    --gold-light: #fcd34d;
+    --transition-smooth: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f9f9f9;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--pink-primary), var(--gold-primary));
+    border-radius: 10px;
+}
+.dark ::-webkit-scrollbar-track {
+    background: #1a1a2e;
+}
+
+/* Selection Color */
+::selection {
+    background: rgba(236, 72, 153, 0.3);
+    color: inherit;
+}
+
+/* ============================================
+   PAGE LOADER
+   ============================================ */
+#pageLoader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.dark #pageLoader {
+    background: #0f0f1a;
+}
+#pageLoader.loaded {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+.loader-ring {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(236, 72, 153, 0.15);
+    border-top-color: var(--pink-primary);
+    border-radius: 50%;
+    animation: loaderSpin 0.8s linear infinite;
+}
+@keyframes loaderSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   NAVIGATION STYLES
+   ============================================ */
+.nav-link {
+    position: relative;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4b5563;
+    transition: var(--transition-smooth);
+    border-radius: 0.5rem;
+}
+.dark .nav-link {
+    color: #d1d5db;
+}
+.nav-link:hover,
+.nav-link.active {
+    color: var(--pink-primary);
+    background: rgba(236, 72, 153, 0.08);
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 20px;
+    height: 2px;
+    background: var(--pink-primary);
+    border-radius: 2px;
+    transition: transform 0.3s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+.mobile-nav-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #4b5563;
+    border-radius: 0.75rem;
+    transition: var(--transition-smooth);
+}
+.dark .mobile-nav-link {
+    color: #d1d5db;
+}
+.mobile-nav-link:hover {
+    background: rgba(236, 72, 153, 0.08);
+    color: var(--pink-primary);
+    padding-left: 1.5rem;
+}
+
+/* Navbar scroll effect */
+#navbar.scrolled {
+    box-shadow: 0 4px 30px rgba(236, 72, 153, 0.1);
+}
+
+/* ============================================
+   FORM STYLES
+   ============================================ */
+.form-input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background: #f9fafb;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.75rem;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    color: #1f2937;
+    transition: var(--transition-smooth);
+    outline: none;
+}
+.dark .form-input {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #f3f4f6;
+}
+.form-input:focus {
+    border-color: var(--pink-primary);
+    box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.15);
+    background: #fff;
+}
+.dark .form-input:focus {
+    background: rgba(255, 255, 255, 0.08);
+}
+.form-input::placeholder {
+    color: #9ca3af;
+}
+select.form-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+    cursor: pointer;
+}
+
+/* ============================================
+   SERVICE CARDS
+   ============================================ */
+.service-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(236, 72, 153, 0.1);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+.dark .service-card {
+    background: #1a1a2e;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--pink-primary), var(--gold-primary));
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(236, 72, 153, 0.15);
+}
+.service-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* ============================================
+   TESTIMONIAL CARDS
+   ============================================ */
+.testimonial-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(236, 72, 153, 0.08);
+    transition: var(--transition-smooth);
+    position: relative;
+}
+.dark .testimonial-card {
+    background: #1a1a2e;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+.testimonial-card::before {
+    content: '\201C';
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 4rem;
+    font-family: 'Playfair Display', serif;
+    color: rgba(236, 72, 153, 0.1);
+    line-height: 1;
+}
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(236, 72, 153, 0.1);
+    border-color: rgba(236, 72, 153, 0.2);
+}
+
+/* ============================================
+   GALLERY STYLES
+   ============================================ */
+.gallery-filter {
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #6b7280;
+    background: #f3f4f6;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+.dark .gallery-filter {
+    background: rgba(255, 255, 255, 0.05);
+    color: #9ca3af;
+}
+.gallery-filter:hover {
+    color: var(--pink-primary);
+    background: rgba(236, 72, 153, 0.08);
+}
+.gallery-filter.active {
+    background: linear-gradient(135deg, var(--pink-primary), var(--pink-dark));
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+}
+
+.gallery-item {
+    transition: var(--transition-smooth);
+    cursor: pointer;
+}
+.gallery-item.hidden-item {
+    display: none;
+}
+
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.25rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+/* ============================================
+   BEFORE/AFTER SLIDER
+   ============================================ */
+.ba-slider {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    cursor: ew-resize;
+    user-select: none;
+    -webkit-user-select: none;
+}
+.ba-image {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+.ba-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.ba-before {
+    width: 50%;
+    z-index: 2;
+}
+.ba-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+.ba-handle-line {
+    flex: 1;
+    width: 3px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.ba-handle-circle {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--pink-primary), var(--gold-primary));
+    border: 3px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+}
+.ba-label {
+    position: absolute;
+    bottom: 1rem;
+    z-index: 4;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    color: white;
+    padding: 0.35rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.ba-label-before {
+    left: 1rem;
+}
+.ba-label-after {
+    right: 1rem;
+}
+
+/* ============================================
+   FLOATING WHATSAPP BUTTON
+   ============================================ */
+#whatsappFloat {
+    animation: whatsappPulse 2s infinite;
+}
+@keyframes whatsappPulse {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* ============================================
+   LOADING / SHIMMER EFFECT
+   ============================================ */
+.shimmer-bg {
+    background: linear-gradient(
+        90deg,
+        rgba(236, 72, 153, 0.05) 25%,
+        rgba(212, 165, 53, 0.1) 50%,
+        rgba(236, 72, 153, 0.05) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+.dark .service-card:hover {
+    box-shadow: 0 25px 50px rgba(236, 72, 153, 0.08);
+}
+.dark .testimonial-card:hover {
+    box-shadow: 0 20px 40px rgba(236, 72, 153, 0.06);
+}
+.dark ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #ec4899, #d4a535);
+}
+
+/* ============================================
+   PRICE ESTIMATOR SECTION
+   ============================================ */
+#est-total {
+    transition: var(--transition-smooth);
+}
+
+/* ============================================
+   CHECKBOX CUSTOM STYLE
+   ============================================ */
+.est-addon {
+    accent-color: var(--pink-primary);
+}
+
+/* ============================================
+   TYPEWRITER CURSOR BLINK
+   ============================================ */
+#typewriter {
+    animation: blink-cursor 0.75s step-end infinite;
+}
+@keyframes blink-cursor {
+    from, to { border-color: transparent; }
+    50% { border-color: #fcd34d; }
+}
+
+/* ============================================
+   STICKY MOBILE CTA
+   ============================================ */
+#mobileCTA.show {
+    transform: translateY(0);
+}
+
+/* ============================================
+   SPECIAL GRADIENT TEXT
+   ============================================ */
+.gradient-text {
+    background: linear-gradient(135deg, var(--pink-primary), var(--gold-primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ============================================
+   BUTTON HOVER GLOW EFFECTS
+   ============================================ */
+.glow-pink {
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+}
+.glow-pink:hover {
+    box-shadow: 0 0 40px rgba(236, 72, 153, 0.5);
+}
+.glow-gold {
+    box-shadow: 0 0 20px rgba(212, 165, 53, 0.3);
+}
+.glow-gold:hover {
+    box-shadow: 0 0 40px rgba(212, 165, 53, 0.5);
+}
+
+/* ============================================
+   SMOOTH REVEAL ANIMATIONS (AOS supplements)
+   ============================================ */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   GALLERY LIGHTBOX
+   ============================================ */
+#lightboxOverlay {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+#lightboxOverlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+#lightboxOverlay img {
+    max-height: 85vh;
+    max-width: 90vw;
+    object-fit: contain;
+    border-radius: 1rem;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 768px) {
+    .ba-slider {
+        aspect-ratio: 4 / 5;
+    }
+    .ba-handle-circle {
+        width: 36px;
+        height: 36px;
+    }
+    .ba-label {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.75rem;
+    }
+    .gallery-item {
+        aspect-ratio: 1 !important;
+    }
+}
+
+@media (max-width: 640px) {
+    html {
+        scroll-padding-top: 70px;
+    }
+    /* Move WhatsApp float above mobile CTA */
+    #whatsappFloat {
+        bottom: 4.5rem;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+    #whatsappFloat,
+    #offer-banner,
+    #navbar,
+    #mobileCTA,
+    #pageLoader {
+        display: none !important;
+    }
+    body {
+        color: #000 !important;
+        background: #fff !important;
+    }
+}
